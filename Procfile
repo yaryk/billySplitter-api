@@ -1,0 +1,1 @@
+web: node ./node_modules/webpack/bin/webpack.js --colors --progress

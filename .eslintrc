@@ -1,0 +1,19 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "chai-expect"
+  ],
+  "rules": {
+    "linebreak-style": 0,
+    "consistent-return": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "import/prefer-default-export": "off",
+    "skipBlankLines": true,
+    "treatUndefinedAsUnspecified": true,
+    "comma-dangle": ["error", "never"]
+  }
+}
