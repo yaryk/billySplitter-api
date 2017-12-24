@@ -1,17 +1,16 @@
 /* global bcrypt */
-
 import mongoose from 'mongoose';
 
 export const schema = {
   username: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   passwordHash: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 };
 
 const userSchema = new mongoose.Schema(schema, { timestamps: true });
@@ -27,7 +26,7 @@ userSchema.methods = {
 
     const salt = bcrypt.genSaltSync(10);
     return bcrypt.hashSync(plaintTextPassword, salt);
-  },
+  }
 };
 
 export const User = mongoose.model('user', userSchema);

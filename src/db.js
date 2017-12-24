@@ -4,7 +4,7 @@ import config from './config';
 mongoose.Promise = global.Promise;
 
 const connect = () => mongoose.connect(config.db.url, {
-  useMongoClient: true,
+  useMongoClient: true
 });
 
 export default connect;
