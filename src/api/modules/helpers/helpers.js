@@ -6,7 +6,7 @@
 *  return { data, err, isSuccess }
 *
 * */
-export function createClientResponse(data, err) {
+export function createClientResponse(data, err = null) {
   return {
     data,
     isSuccess: data !== null,

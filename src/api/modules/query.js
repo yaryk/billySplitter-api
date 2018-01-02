@@ -1,6 +1,6 @@
 import merge from 'lodash.merge';
 import mongoose from 'mongoose';
-import { createClientResponse } from './helpers';
+import { createClientResponse } from './helpers/helpers';
 import { ClientErrors } from './errors/client-errors';
 
 export const controllers = {

@@ -1,10 +1,10 @@
-import { createClientResponse } from '../helpers';
+import { createClientResponse } from '../helpers/helpers';
 import { ClientErrors } from './client-errors';
 
 /*
 *  This function for creating error response to client
 * */
-export const apiErrorHandler = (error, req, res, next) => {
+export const apiErrorHandler = (error, req, res) => {
   const errorDetails = {
     message: error.message,
     status: error.status || 500

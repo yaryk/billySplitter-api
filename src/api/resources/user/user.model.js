@@ -1,32 +1,49 @@
-/* global bcrypt */
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+
+const SALT = 10;
 
 export const schema = {
-  username: {
+  email: {
     type: String,
+    unique: true,
     required: true,
-    unique: true
+    lowercase: true,
+    trim: true
   },
-  passwordHash: {
+  username: String,
+  password: {
     type: String,
     required: true
-  }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  groups: [
+    { type: mongoose.Schema.ObjectId, ref: 'Group' }
+  ]
 };
 
 const userSchema = new mongoose.Schema(schema, { timestamps: true });
 
 userSchema.methods = {
   authenticate(plaintTextPassword) {
-    return bcrypt.compareSync(plaintTextPassword, this.password);
-  },
-  hashPassword(plaintTextPassword) {
-    if (!plaintTextPassword) {
-      throw new Error('Could not save user');
-    }
-
-    const salt = bcrypt.genSaltSync(10);
-    return bcrypt.hashSync(plaintTextPassword, salt);
+    return bcrypt.compare(plaintTextPassword, this.password);
   }
 };
+
+userSchema.pre('save', function (next) {
+  const user = this;
+
+  bcrypt.hash(user.password, SALT)
+    .then((hash) => {
+      user.password = hash;
+      next();
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
 
 export const User = mongoose.model('user', userSchema);

@@ -7,7 +7,7 @@ module.exports = {
   target: 'node',
   output: {
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   resolve: {
     alias: {
@@ -15,8 +15,8 @@ module.exports = {
       '~testhelpers': path.resolve(__dirname, 'test/helpers'),
       '~apiSpecs': path.resolve(__dirname, 'test/apiSpecs'),
       '~/apiSpecs': path.resolve(__dirname, 'test/apiSpecs'),
-      '~/config': path.resolve(__dirname, 'src/config/index'),
-    },
+      '~/config': path.resolve(__dirname, 'src/config/index')
+    }
   },
   devtool: 'cheap-module-source-map',
   externals: [nodeExternals()],
@@ -30,19 +30,19 @@ module.exports = {
             options: {
               babelrc: false,
               presets: [['env', { modules: false }], 'stage-0'],
-              plugins: ['transform-regenerator', 'transform-runtime'],
-            },
-          },
+              plugins: ['transform-regenerator', 'transform-runtime']
+            }
+          }
         ],
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.html$/,
         exclude: /node_modules/,
         use: {
-          loader: 'raw-loader',
-        },
-      },
-    ],
-  },
+          loader: 'raw-loader'
+        }
+      }
+    ]
+  }
 };

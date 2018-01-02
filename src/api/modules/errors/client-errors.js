@@ -9,12 +9,22 @@ export const ClientErrors = {
     message: 'Element not found'
   },
   // from 21 - 50 auth errors
-  UNAUTHORIZED: {
-    code: 21,
-    message: 'User is not authorized'
-  },
-  USER_EXSIST: {
-    code: 22,
-    message: 'User with this username already exist'
+  AUTH_ERROR: {
+    UNAUTHORIZED: {
+      code: 21,
+      message: 'User is not authorized'
+    },
+    USER_EMAIL_EXSIST: {
+      code: 22,
+      message: 'User with this email already exist'
+    },
+    USER_NOT_FOUND: {
+      code: 23,
+      message: 'User with with this email does not exist'
+    },
+    WRONG_PASS: {
+      code: 24,
+      message: 'Password is not correct'
+    }
   }
 };
